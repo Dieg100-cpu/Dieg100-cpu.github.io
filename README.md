@@ -10,13 +10,31 @@ University of Utah
 This is my personal portfolio website showcasing my work, projects, and skills in accounting and finance.
 
 ### About Me
-I'm an accounting student at the University of Utah with a passion for financial analysis and problem-solving. I'm committed to developing my professional skills and exploring opportunities in the accounting and finance industry.
+I'm an Accounting major at the University of Utah with a strong passion for financial analysis and problem-solving. My career goal is to become a financial auditor, where I can apply rigorous analytical thinking to ensure financial integrity and compliance. I'm deeply interested in exploring how artificial intelligence can enhance audit processes and financial analysis, and I'm actively developing technical skills in AI and automation to leverage these tools in my future professional work.
 
-### What You'll Find Here
-- **Projects** - Case studies and work samples
-- **Skills** - Core competencies and expertise
-- **Experience** - Professional background and achievements
-- **Contact** - Get in touch with me
+### Skills
+- **HTML** - Web markup and structure
+- **JavaScript** - Client-side scripting
+- **Python** - Data analysis and automation
+- **Microsoft Excel** - Financial modeling and analysis
+
+### Projects
+
+| Project | Description |
+|---------|-------------|
+| AI Business Analysis | Analyze business data using ChatGPT |
+| Data Visualization | Dashboard built with Tableau |
+| Web Development | Responsive Bootstrap website |
+| Process Improvement | AI-assisted business workflow redesign |
+
+*More projects coming throughout the semester!*
+
+### Resume
+Resume coming soon
+
+### Contact
+- **University Email:** u1492034@umail.utah.edu
+- **GitHub:** [github.com/Dieg100-cpu](https://github.com/Dieg100-cpu)
 
 ---
 
