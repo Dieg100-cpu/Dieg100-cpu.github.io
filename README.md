@@ -19,7 +19,9 @@ https://username.github.io
 This is my personal portfolio website showcasing my work, projects, and skills in accounting and finance.
 
 ### About Me
-I'm an Accounting major at the University of Utah with a strong passion for financial analysis and problem-solving. My career goal is to become a financial auditor, where I can apply rigorous anal[...]
+I'm an Accounting major at the University of Utah with a strong passion for financial analysis and problem-solving. My career goal is to become a financial auditor, where I can apply rigorous analytical thinking to ensure financial integrity and compliance. I'm deeply interested in exploring how artificial intelligence can enhance audit processes and financial analysis, and I'm actively developing technical skills in AI and automation to leverage these tools in my future professional work.
+
+
 
 ### Skills
 - **HTML** - Web markup and structure
