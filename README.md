@@ -10,7 +10,7 @@ University of Utah
 This repository hosts my professional GitHub portfolio for IS 3060.
 
 Website:
-https://username.github.io
+https://Dieg100-cpu.github.io
 
 ---
 
