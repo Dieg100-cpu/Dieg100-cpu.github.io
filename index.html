@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diego Lopez-Sanchez - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f8f9fa;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -14,221 +26,834 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
         }
         
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* Navigation Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: var(--accent-color) !important;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 100px 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
         
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,128C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.5;
         }
         
-        header p {
-            font-size: 1.2em;
-            margin-bottom: 5px;
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        section {
-            background: white;
-            padding: 30px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        section h2 {
-            color: #667eea;
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 20px;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         
-        .about-text {
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .hero .institution {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            margin-top: 30px;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 28px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Main Content Sections */
+        .content-section {
+            padding: 60px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text p {
             font-size: 1.05em;
             line-height: 1.8;
             margin-bottom: 20px;
+            color: var(--text-light);
         }
         
-        .skills-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+        .about-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
         }
         
-        .skill-item {
-            background: #f0f0f0;
-            padding: 15px;
-            border-left: 4px solid #667eea;
-            border-radius: 4px;
+        .about-box {
+            padding: 20px;
+            background: var(--light-bg);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
         
-        .skill-item strong {
-            color: #667eea;
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
         }
         
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+        /* Skills Section */
+        .skills-section {
+            background: var(--light-bg);
         }
         
-        table th, table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        
-        table th {
-            background-color: #667eea;
-            color: white;
-        }
-        
-        table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        
-        .contact-info {
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .contact-item {
-            background: #f0f0f0;
-            padding: 15px;
-            border-radius: 4px;
-        }
-        
-        .contact-item strong {
-            color: #667eea;
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .contact-item a {
-            color: #667eea;
-            text-decoration: none;
-        }
-        
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
-        
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
+            gap: 25px;
             margin-top: 40px;
         }
         
-        .coming-soon {
-            color: #999;
-            font-style: italic;
-            margin-top: 10px;
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+            border-top-color: var(--accent-color);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .skill-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        /* Projects Section */
+        .projects-section {
+            background: white;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 30px;
+            color: white;
+            text-align: center;
+        }
+        
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .project-body {
+            padding: 20px;
+        }
+        
+        .project-body p {
+            color: var(--text-light);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .contact-section .section-title h2 {
+            color: white;
+        }
+        
+        .contact-section .section-title h2::after {
+            background: linear-gradient(90deg, var(--accent-color), white);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+        
+        .contact-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .contact-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .social-link:hover {
+            background: var(--accent-color);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        footer p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        /* Smooth Scrolling and Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        /* Loading Animation */
+        .spinner {
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid var(--primary-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Diego Lopez-Sanchez</h1>
-        <p>Accounting Student</p>
-        <p>University of Utah</p>
-    </header>
-    
-    <div class="container">
-        <section id="about">
-            <h2>Welcome to My Portfolio</h2>
-            <p class="about-text">
-                This is my personal portfolio website showcasing my work, projects, and skills in accounting and finance.
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-code"></i> Diego Lopez-Sanchez
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Diego Lopez-Sanchez</h1>
+            <p class="subtitle">Accounting Student</p>
+            <p class="institution">University of Utah</p>
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: rgba(255, 255, 255, 0.9);">
+                Passionate about financial analysis, auditing, and business excellence
             </p>
-            <p class="about-text">
-                I'm an Accounting major at the University of Utah with a strong passion for financial analysis and problem-solving. My career goal is to become a financial auditor, where I can apply rigorous analysis and attention to detail to ensure financial integrity and organizational success.
-            </p>
-        </section>
-        
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-list">
-                <div class="skill-item">
-                    <strong>HTML</strong>
-                    <p>Web markup and structure</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-briefcase"></i> View My Work
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="content-section about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Learn more about my background and goals</p>
+            </div>
+            <div class="about-content">
+                <div>
+                    <div class="about-box">
+                        <div class="about-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Professional Background</h3>
+                        <p>I'm an Accounting major at the University of Utah with a strong passion for financial analysis and problem-solving. My career goal is to become a financial auditor, where I can apply rigorous analysis and attention to detail to ensure financial integrity and organizational success.</p>
+                    </div>
+                    <div class="about-box">
+                        <div class="about-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>My Approach</h3>
+                        <p>I believe in continuous learning and applying cutting-edge technology to solve complex accounting and business challenges. I combine traditional accounting principles with modern analytical tools and AI-assisted solutions.</p>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <strong>JavaScript</strong>
-                    <p>Client-side scripting</p>
-                </div>
-                <div class="skill-item">
-                    <strong>Python</strong>
-                    <p>Data analysis and automation</p>
-                </div>
-                <div class="skill-item">
-                    <strong>Microsoft Excel</strong>
-                    <p>Financial modeling and analysis</p>
+                <div>
+                    <div class="about-box">
+                        <div class="about-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Education</h3>
+                        <p>Currently pursuing my degree at the University of Utah with focus on:</p>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>Financial Accounting & Analysis</li>
+                            <li>Auditing & Compliance</li>
+                            <li>Business Intelligence</li>
+                            <li>Technology & Financial Systems</li>
+                        </ul>
+                    </div>
+                    <div class="about-box">
+                        <div class="about-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Goals</h3>
+                        <p>I aim to become a trusted financial auditor who helps organizations identify risks, ensure compliance, and optimize their financial operations for sustainable growth.</p>
+                    </div>
                 </div>
             </div>
-        </section>
-        
-        <section id="projects">
-            <h2>Projects</h2>
-            <table>
-                <tr>
-                    <th>Project</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td>AI Business Analysis</td>
-                    <td>Analyze business data using ChatGPT</td>
-                </tr>
-                <tr>
-                    <td>Data Visualization</td>
-                    <td>Dashboard built with Tableau</td>
-                </tr>
-                <tr>
-                    <td>Web Development</td>
-                    <td>Responsive Bootstrap website</td>
-                </tr>
-                <tr>
-                    <td>Process Improvement</td>
-                    <td>AI-assisted business workflow redesign</td>
-                </tr>
-            </table>
-            <p class="coming-soon">More projects coming throughout the semester!</p>
-        </section>
-        
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <strong>University Email</strong>
-                    <a href="mailto:u1492034@umail.utah.edu">u1492034@umail.utah.edu</a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="content-section skills-section" id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Expertise</h2>
+                <p>Technical and professional competencies</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>HTML</h3>
+                    <p>Web markup and structure for building responsive websites and applications</p>
                 </div>
-                <div class="contact-item">
-                    <strong>GitHub</strong>
-                    <a href="https://github.com/Dieg100-cpu" target="_blank">github.com/Dieg100-cpu</a>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Client-side scripting for interactive and dynamic web experiences</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Data analysis, automation, and business logic implementation</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <h3>Microsoft Excel</h3>
+                    <p>Financial modeling, data analysis, and advanced spreadsheet management</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Financial Analysis</h3>
+                    <p>Balance sheet analysis, cash flow management, and financial reporting</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Auditing & Compliance</h3>
+                    <p>Internal controls assessment, regulatory compliance, and risk evaluation</p>
                 </div>
             </div>
-        </section>
-    </div>
-    
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="content-section projects-section" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+                <p>Showcase of my professional work and accomplishments</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI Business Analysis</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Leveraging ChatGPT and advanced AI tools to analyze complex business data, identify patterns, and provide actionable insights for strategic decision-making.</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3>Data Visualization</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Interactive dashboard built with Tableau to visualize financial metrics, key performance indicators, and business trends in real-time for stakeholders.</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Responsive Bootstrap website with modern design principles, mobile-first approach, and clean typography for optimal user experience across all devices.</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Process Improvement</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>AI-assisted business workflow redesign to streamline operations, reduce inefficiencies, and implement automation for enhanced productivity and cost savings.</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3>Financial Reporting</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Comprehensive financial statement analysis and automated reporting solutions for accurate and timely financial communication with stakeholders.</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Compliance & Controls</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Internal audit framework development and implementation of controls to ensure organizational compliance with regulatory requirements and best practices.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px; color: var(--text-light); font-style: italic;">
+                <p><i class="fas fa-star"></i> More innovative projects coming throughout the semester!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Let's connect and explore opportunities together</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>University Email</h3>
+                    <a href="mailto:u1492034@umail.utah.edu">
+                        u1492034@umail.utah.edu
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-github"></i>
+                    </div>
+                    <h3>GitHub Profile</h3>
+                    <a href="https://github.com/Dieg100-cpu" target="_blank">
+                        github.com/Dieg100-cpu
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>University</h3>
+                    <p>University of Utah<br>Salt Lake City, Utah</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/Dieg100-cpu" target="_blank" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:u1492034@umail.utah.edu" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Diego Lopez-Sanchez. All rights reserved.</p>
+        <p>&copy; 2024 Diego Lopez-Sanchez. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #f093fb;"></i> for excellence.</p>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navbar link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
